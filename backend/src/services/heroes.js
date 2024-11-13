@@ -17,8 +17,7 @@ export const getHeroes = async ({ page, perPage }) => {
     perPage,
     page
   );
-
-  return { data: heroes, ...paginationData };
+  return { heroes: heroes, ...paginationData };
 };
 
 export const getHeroById = async (heroId) => {

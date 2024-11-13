@@ -11,12 +11,8 @@ import { photoHandler } from "../middlewares/photoHandler.js";
 
 export const getHeroesController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
-  const heroes = await getHeroes({ page, perPage });
-  res.status(200).json({
-    status: res.statusCode,
-    message: "Successfully found heroes!",
-    data: heroes,
-  });
+  const responce = await getHeroes({ page, perPage });
+  res.status(200).json(responce);
 };
 
 export const getHeroByIdController = async (req, res) => {
@@ -27,22 +23,14 @@ export const getHeroByIdController = async (req, res) => {
     throw createHttpError(404, "Hero not found...");
   }
 
-  res.status(200).json({
-    status: res.statusCode,
-    data: hero,
-    message: `Successfully found hero with id ${heroId}!`,
-  });
+  res.status(200).json(hero);
 };
 
 export const createHeroController = async (req, res) => {
   const photoUrls = await photoHandler(req.files);
   const hero = await createHero({ ...req.body, images: photoUrls });
 
-  res.status(201).json({
-    status: 201,
-    message: `Successfully created hero!`,
-    data: hero,
-  });
+  res.status(201).json(hero);
 };
 
 export const deleteHeroController = async (req, res, next) => {
@@ -66,16 +54,11 @@ export const patchHeroController = async (req, res, next) => {
     images: photoUrls,
   };
   const result = await updateHero(heroId, updates);
-  // Додати логіку додавання та видалення конкретної фотографії та суперсили, вони зараз перезаписуються.
 
   if (!result) {
     next(createHttpError(404, "Hero not found"));
     return;
   }
 
-  res.json({
-    status: 200,
-    message: `Successfully patched Hero data!`,
-    data: result.hero,
-  });
+  res.json(result.hero);
 };

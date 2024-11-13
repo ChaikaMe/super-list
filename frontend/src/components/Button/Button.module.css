@@ -1,0 +1,12 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--themeColor);
+  border: 0 solid transparent;
+  transition: background-color var(--animation);
+}
+
+.button:hover {
+  background-color: var(--themeSubColor);
+}
