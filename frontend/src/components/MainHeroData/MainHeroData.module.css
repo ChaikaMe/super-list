@@ -1,0 +1,98 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  position: relative;
+}
+
+.editButton {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.deleteHeroButton {
+  position: absolute;
+  top: 24px;
+  left: 80%;
+  padding: 12px;
+  border-radius: 12px;
+  color: red;
+  border: 2px solid red;
+}
+
+.image {
+  height: 100%;
+  border: 2px solid black;
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.noImageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.textData {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.heroName {
+  font-size: 48px;
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: transparent;
+}
+
+.text {
+  font-size: 20px;
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: transparent;
+  resize: none;
+}
+
+.active {
+  background-color: var(--themeSubColor);
+}
+
+.itemList {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.item {
+  border: 2px solid black;
+  padding: 8px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.superpowerInput {
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: transparent;
+  text-align: center;
+}
+
+.delButton {
+  border: transparent;
+  background-color: transparent;
+}
+
+.addPowButton {
+  border: 2px solid black;
+  padding: 8px;
+}

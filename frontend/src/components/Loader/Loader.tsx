@@ -6,7 +6,7 @@ export default function Loader() {
       visible={true}
       height="80"
       width="80"
-      color="var(--themeColor)"
+      color="var(--active)"
       ariaLabel="grid-loading"
       radius="12.5"
       wrapperStyle={{
@@ -16,8 +16,6 @@ export default function Loader() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background:
-          "radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%)",
       }}
     />
   );

@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Loader from "./Loader/Loader.tsx";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage.tsx"));
 const HeroPage = lazy(() => import("../pages/HeroPage/HeroPage.tsx"));
@@ -12,7 +13,7 @@ const NotFoundPage = lazy(
 
 export default function App() {
   return (
-    <Suspense fallback={""}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/heroes" element={<HeroesListPage />} />

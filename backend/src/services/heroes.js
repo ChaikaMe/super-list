@@ -1,7 +1,13 @@
 import { HeroesCollection } from "../db/models/heroModel.js";
 import { calculatePaginationData } from "../utils/pagination/calculatePaginationData.js";
+import { SORT_ORDER } from "../constants/index.js";
 
-export const getHeroes = async ({ page, perPage }) => {
+export const getHeroes = async ({
+  page,
+  perPage,
+  sortOrder = SORT_ORDER.ASC,
+  sortBy = "_id",
+}) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
@@ -10,7 +16,11 @@ export const getHeroes = async ({ page, perPage }) => {
     .merge(heroesQuery)
     .countDocuments();
 
-  const heroes = await heroesQuery.skip(skip).limit(limit).exec();
+  const heroes = await heroesQuery
+    .skip(skip)
+    .limit(limit)
+    .sort({ [sortBy]: sortOrder })
+    .exec();
 
   const paginationData = calculatePaginationData(
     heroesCount,

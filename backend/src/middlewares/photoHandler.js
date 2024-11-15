@@ -3,6 +3,7 @@ import { saveFileToCloudinary } from "../utils/files/saveFileToCloudinary.js";
 import { saveFileToUploadDir } from "../utils/files/saveFileToUploadDir.js";
 
 export const photoHandler = async (files) => {
+  console.log(files);
   const photoUrls = [];
 
   for (const file of files) {

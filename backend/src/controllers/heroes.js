@@ -8,10 +8,18 @@ import {
 } from "../services/heroes.js";
 import { parsePaginationParams } from "../utils/pagination/parsePaginationParams.js";
 import { photoHandler } from "../middlewares/photoHandler.js";
+import { parseSortParams } from "../utils/parseSortParams.js";
 
 export const getHeroesController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
-  const responce = await getHeroes({ page, perPage });
+  const { sortBy, sortOrder } = parseSortParams(req.query);
+
+  const responce = await getHeroes({
+    page,
+    perPage,
+    sortBy,
+    sortOrder,
+  });
   res.status(200).json(responce);
 };
 
@@ -27,9 +35,7 @@ export const getHeroByIdController = async (req, res) => {
 };
 
 export const createHeroController = async (req, res) => {
-  const photoUrls = await photoHandler(req.files);
-  const hero = await createHero({ ...req.body, images: photoUrls });
-
+  const hero = await createHero({ ...req.body });
   res.status(201).json(hero);
 };
 
@@ -47,8 +53,10 @@ export const deleteHeroController = async (req, res, next) => {
 };
 
 export const patchHeroController = async (req, res, next) => {
-  const photoUrls = await photoHandler(req.files);
   const { heroId } = req.params;
+  const photoUrls = req.files
+    ? await photoHandler(req.files)
+    : req.body.images;
   const updates = {
     ...req.body,
     images: photoUrls,

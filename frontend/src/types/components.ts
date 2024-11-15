@@ -1,3 +1,5 @@
+import { heroData } from "./data";
+
 interface ComponentWithText {
   className: string;
   children: string;
@@ -14,6 +16,10 @@ export interface LinkButtonProps extends ComponentWithText {
   address: string;
 }
 
-export interface HeroesListProps {
-  heroes: object[];
+export interface HeroListItemProps {
+  hero: heroData;
+}
+
+export interface MainHeroDataProps {
+  hero: heroData;
 }

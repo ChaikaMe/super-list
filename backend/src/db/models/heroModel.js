@@ -8,14 +8,12 @@ const heroSchema = new Schema(
     },
     real_name: {
       type: String,
-      required: true,
     },
     origin_description: {
       type: String,
     },
     superpowers: {
       type: [String],
-      required: true,
     },
     catch_phrase: {
       type: String,

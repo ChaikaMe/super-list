@@ -5,16 +5,16 @@
   --subMain: rgba(18, 20, 23, 0.8);
   --themeColor: #9fb7ce;
   --themeSubColor: #bfd6ea;
+  --active: #ffde00;
   --animation: 150ms ease-in;
+  --bgColor: #1c2225;
+  --white: #fcf9f9;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   color: var(--main);
-  background-image: url("../src/img/bgImage.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--bgColor);
 }
 
 ul,

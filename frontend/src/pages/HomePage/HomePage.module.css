@@ -7,6 +7,11 @@
   justify-content: center;
 }
 
+.mainTitle {
+  color: var(--active);
+  text-shadow: 0 0 10px black;
+}
+
 .button {
   width: 400px;
   height: 100px;
