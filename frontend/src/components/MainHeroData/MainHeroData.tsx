@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { MainHeroDataProps } from "../../types/components";
 import css from "./MainHeroData.module.css";
 import { checkBlancFields } from "../../helpers/checkBlancFields";
