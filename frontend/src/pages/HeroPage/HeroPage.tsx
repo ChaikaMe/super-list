@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import css from "./HeroPage.module.css";
 import { useEffect, useState } from "react";
 import { heroData } from "../../types/data";
