@@ -7,6 +7,10 @@
   gap: 16px;
 }
 
+.mainTitle {
+  color: var(--active);
+}
+
 .button {
   width: 400px;
   height: 100px;

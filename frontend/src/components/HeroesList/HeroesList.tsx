@@ -51,6 +51,12 @@ export default function HeroesList() {
     setAddState(!addState);
     if (addState && heroNameRef.current?.value) {
       await postHero(heroNameRef.current.value);
+      const response = await fetchHeroes(1);
+      console.log(response);
+      setData((prevData) => ({
+        ...prevData,
+        heroes: [response.heroes[0], ...prevData.heroes],
+      }));
     }
   };
 
@@ -59,7 +65,12 @@ export default function HeroesList() {
       <ul className={css.list}>
         <li className={css.addItem}>
           {addState && (
-            <input ref={heroNameRef} placeholder="Enter hero name!" />
+            <input
+              ref={heroNameRef}
+              name="name"
+              autoComplete="off"
+              placeholder="Enter hero name!"
+            />
           )}
 
           <Button

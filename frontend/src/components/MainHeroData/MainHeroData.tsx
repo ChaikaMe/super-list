@@ -3,15 +3,15 @@ import { MainHeroDataProps } from "../../types/components";
 import css from "./MainHeroData.module.css";
 import { checkBlancFields } from "../../helpers/checkBlancFields";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { deleteHero, patchHero } from "../../axios/heroes";
 import { heroData } from "../../types/data";
 import { isEqual } from "lodash";
 import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
 
 export default function MainHeroData({ hero }: MainHeroDataProps) {
-  const navigate = useNavigate();
   const [heroData, setTextHeroData] = useState({ ...hero });
+  const navigate = useNavigate();
 
   const changeDataHandler = (e: { name: string; value: string }) => {
     setTextHeroData((prevData) => ({
@@ -64,7 +64,10 @@ export default function MainHeroData({ hero }: MainHeroDataProps) {
 
   const handleDelete = async (id: string) => {
     await deleteHero(id);
-    navigate("/heroes");
+
+    setTimeout(() => {
+      navigate("/heroes", { replace: true });
+    }, 500);
   };
 
   return (

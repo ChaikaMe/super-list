@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import css from "./HeroPage.module.css";
 import { useEffect, useState } from "react";
 import { heroData } from "../../types/data";
@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 export default function HeroPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const heroId = location.pathname.split("/").filter(Boolean).pop();
 
   const [heroData, setHeroData] = useState<heroData>();
@@ -17,6 +18,9 @@ export default function HeroPage() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetchHeroData(heroId);
+      if (!response) {
+        navigate("/Notfound", { replace: true });
+      }
       setHeroData(response);
       setLoading(false);
     }
