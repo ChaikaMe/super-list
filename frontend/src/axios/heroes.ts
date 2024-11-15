@@ -1,7 +1,7 @@
 import axios from "axios";
 import { heroData } from "../types/data";
 
-axios.defaults.baseURL = "http://localhost:3000/";
+axios.defaults.baseURL = "https://super-list.onrender.com/";
 
 export async function fetchHeroes(page: number) {
   try {
